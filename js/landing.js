@@ -40,10 +40,10 @@ form.addEventListener('submit', async event => {
       status.textContent = 'Vielen Dank! Ihre Anfrage ist bei uns eingegangen. Wir melden uns schnellstmöglich bei Ihnen.';
       form.reset();
     } else {
-      status.textContent = result.error || 'Ihre Anfrage konnte nicht gesendet werden. Bitte rufen Sie uns unter 0212 – 240 914 90 an oder schreiben Sie an info@cleanteam-group.com.';
+      status.textContent = result.error || 'Ihre Anfrage konnte nicht gesendet werden. Bitte rufen Sie uns unter 0231 22614620 an oder schreiben Sie an info@cleanteam-group.com.';
     }
   } catch (err) {
-    status.textContent = 'Ihre Anfrage konnte nicht gesendet werden. Bitte rufen Sie uns unter 0212 – 240 914 90 an oder schreiben Sie an info@cleanteam-group.com.';
+    status.textContent = 'Ihre Anfrage konnte nicht gesendet werden. Bitte rufen Sie uns unter 0231 22614620 an oder schreiben Sie an info@cleanteam-group.com.';
   } finally {
     if (submitBtn) submitBtn.disabled = false;
   }
