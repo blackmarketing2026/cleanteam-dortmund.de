@@ -1,0 +1,9 @@
+{
+  "name": "cleanteam-dortmund-website",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Statische Webseite von CleanTeam Dortmund inkl. Serverless-Funktion fuer den Mailversand des Kontaktformulars.",
+  "dependencies": {
+    "nodemailer": "^6.9.14"
+  }
+}

@@ -8,11 +8,43 @@ document.addEventListener('keydown', event => { if (event.key === 'Escape' && na
 document.querySelectorAll('[data-service]').forEach(link => link.addEventListener('click', () => { document.querySelector('#service').value = link.dataset.service; }));
 document.querySelector('[data-year]').textContent = new Date().getFullYear();
 const form = document.querySelector('.contact-form');
-form.addEventListener('submit', event => {
+form.addEventListener('submit', async event => {
   event.preventDefault();
   if (!form.reportValidity()) return;
   const data = new FormData(form);
-  const body = ['Guten Tag Clean Team,', '', 'ich interessiere mich für eine Reinigung in Dortmund und Umgebung.', '', 'Name: ' + data.get('name'), 'Unternehmen: ' + (data.get('company') || '–'), 'E-Mail: ' + data.get('email'), 'Telefon: ' + (data.get('phone') || '–'), 'Leistung: ' + (data.get('service') || 'Allgemeine Anfrage'), '', data.get('message')].join('\r\n');
-  window.location.href = 'mailto:info@cleanteam-group.com?subject=' + encodeURIComponent('Reinigungsanfrage – Clean Team Dortmund') + '&body=' + encodeURIComponent(body);
-  form.querySelector('.form-status').textContent = 'Ihre Anfrage ist vorbereitet. Bitte senden Sie sie in Ihrem E-Mail-Programm ab. Falls sich kein Programm öffnet, schreiben Sie an info@cleanteam-group.com oder rufen Sie 0212 – 240 914 90 an. Ihre Eingaben bleiben hier erhalten.';
+  const status = form.querySelector('.form-status');
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const payload = {
+    name: data.get('name'),
+    company: data.get('company'),
+    email: data.get('email'),
+    phone: data.get('phone'),
+    service: data.get('service'),
+    message: data.get('message'),
+    privacy: data.get('privacy') === 'on',
+    website: data.get('website'), // Honeypot, bleibt für Menschen leer
+  };
+
+  status.textContent = 'Ihre Anfrage wird gesendet …';
+  if (submitBtn) submitBtn.disabled = true;
+
+  try {
+    const response = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    const result = await response.json().catch(() => ({}));
+
+    if (response.ok && result.ok) {
+      status.textContent = 'Vielen Dank! Ihre Anfrage ist bei uns eingegangen. Wir melden uns schnellstmöglich bei Ihnen.';
+      form.reset();
+    } else {
+      status.textContent = result.error || 'Ihre Anfrage konnte nicht gesendet werden. Bitte rufen Sie uns unter 0212 – 240 914 90 an oder schreiben Sie an info@cleanteam-group.com.';
+    }
+  } catch (err) {
+    status.textContent = 'Ihre Anfrage konnte nicht gesendet werden. Bitte rufen Sie uns unter 0212 – 240 914 90 an oder schreiben Sie an info@cleanteam-group.com.';
+  } finally {
+    if (submitBtn) submitBtn.disabled = false;
+  }
 });
