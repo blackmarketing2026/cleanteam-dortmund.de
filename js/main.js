@@ -31,14 +31,15 @@ function initContactForm() {
       return;
     }
 
-    // Hinweis: Es ist noch kein Versand-Endpoint angebunden (siehe README.md).
-    // Sobald ein Formular-Backend (z. B. Formspree) eingerichtet ist, hier
-    // den fetch()-Aufruf an den entsprechenden Endpoint ergänzen.
+    var data = new FormData(form);
+    var body = ['Name: ' + data.get('name'), 'E-Mail: ' + data.get('email'),
+      'Telefon: ' + (data.get('phone') || '–'), 'Leistung: ' + (data.get('service') || 'Allgemeine Anfrage'),
+      '', data.get('message')].join('\r\n');
+    window.location.href = 'mailto:info@cleanteam-group.com?subject=' + encodeURIComponent('Reinigungsanfrage – Clean Team Dortmund') + '&body=' + encodeURIComponent(body);
     if (status) {
-      status.textContent = "Danke für Ihre Nachricht! Wir melden uns schnellstmöglich bei Ihnen.";
+      status.textContent = "Ihre Anfrage ist vorbereitet. Bitte senden Sie die E-Mail in Ihrem E-Mail-Programm selbst ab. Falls sich kein Programm öffnet, schreiben Sie an info@cleanteam-group.com. Ihre Eingaben bleiben erhalten.";
       status.className = "form-status success";
     }
-    form.reset();
   });
 }
 

@@ -50,3 +50,14 @@ cleanteam-dortmund.de/
 - [ ] Kontaktformular an einen echten Versand-Endpoint anbinden (z. B. Formspree, eigenes Backend)
 - [ ] Favicon & Social-Preview-Bild (Open Graph) ergänzen
 - [ ] Hosting/Domain-Verbindung einrichten und `sitemap.xml` bei der Google Search Console einreichen
+
+## Landingpage – September 2026
+
+Die neue Startseite nutzt `css/landing.css` und `js/landing.js`. Das bestehende HTML-Projekt und seine Unterseiten bleiben erhalten.
+
+- Telefon-Buttons: `tel:+4921224091490`, mobil zusätzlich eine feste Kontaktleiste.
+- Kontaktformular: Browservalidierung und vorbereitete E-Mail an `info@cleanteam-group.com`. Der Besucher sendet im eigenen E-Mail-Programm ab. Es gibt keinen automatischen Versand und keine vorgetäuschte Versandbestätigung. Für direkten Versand ist ein echter Backend-Endpunkt erforderlich.
+- Impressum, Datenschutz und AGB verweisen auf die entsprechenden Seiten von `cleanteam-solingen.de`. Die Übereinstimmung der Anbieterangaben und Datenschutzhinweise mit dem Dortmunder Angebot und dem endgültigen Hosting muss der Betreiber bestätigen. Die alten lokalen Rechtstexte sind nicht mehr in der Navigation verlinkt.
+- `images/zertifikat-iso-9001.webp`: aus der bereitgestellten JPEG-Datei, Qualitätsstufe 92. Das Dokument gilt vom 24.03.2023 bis zum 09.03.2026 und wird als abgelaufener Nachweis dargestellt. Keine Behauptung einer aktuell gültigen TÜV-Zertifizierung.
+- Keine externen Fonts, Tracking-Skripte, Cookies oder eingebetteten Drittanbieterdienste in der Landingpage.
+- Öffentliche Dateien werden mit `python scripts/build.py` nach `dist` kopiert und auf fehlerhafte lokale Links geprüft. Transferdateien und interne Dateien werden nicht ausgeliefert.
