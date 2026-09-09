@@ -61,3 +61,7 @@ Die neue Startseite nutzt `css/landing.css` und `js/landing.js`. Das bestehende 
 - `images/zertifikat-iso-9001.webp`: aus der bereitgestellten JPEG-Datei, Qualitätsstufe 92. Das Dokument gilt vom 24.03.2023 bis zum 09.03.2026 und wird als abgelaufener Nachweis dargestellt. Keine Behauptung einer aktuell gültigen TÜV-Zertifizierung.
 - Keine externen Fonts, Tracking-Skripte, Cookies oder eingebetteten Drittanbieterdienste in der Landingpage.
 - Öffentliche Dateien werden mit `python scripts/build.py` nach `dist` kopiert und auf fehlerhafte lokale Links geprüft. Transferdateien und interne Dateien werden nicht ausgeliefert.
+
+### Erweiterung: Bilder, Sektionen und FAQs
+
+Vier weitere, lokal gespeicherte WebP-Motive von der vorhandenen Clean-Team-Website ergänzen Hero und Einsatzbereiche. Quellen sind in `image-sources.json` dokumentiert. Neue Abschnitte behandeln Einsatzbereiche, die vier Schritte der Zusammenarbeit, Materialpflege/Werterhalt und acht häufige Fragen. Die FAQ verwenden native `details`/`summary`-Elemente und funktionieren per Tastatur sowie ohne JavaScript. Bilder unterhalb des Einstiegs werden verzögert geladen; Bildabmessungen und responsive Layouts sind hinterlegt.
