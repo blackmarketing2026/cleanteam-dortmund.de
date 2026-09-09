@@ -1,9 +1,8 @@
 [
   {
-    "file": "images/reinigung-team.webp",
-    "source_page": "https://cleanteam-solingen.de/",
-    "source_image": "https://cleanteam-solingen.de/wp-content/uploads/2026/03/Cleanteam-Gebaeudereinigung-Solingen-55.webp",
-    "note": "Bildmaterial der vom Auftraggeber referenzierten Clean-Team-Website; keine separate offene Lizenz ausgewiesen."
+    "file": "images/header-reinigung-original.webp",
+    "source": "Original generation using built-in image_gen, no reference images",
+    "prompt_file": "docs/header-image-prompt.md"
   },
   {
     "file": "images/reinigung-glas.webp",
