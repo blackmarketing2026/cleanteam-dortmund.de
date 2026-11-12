@@ -24,11 +24,11 @@ for path,doc in docs.items():
     for link in doc.links:
         url=urlsplit(link)
         if url.scheme or url.netloc: continue
-        target=(path.parent / unquote(url.path)).resolve() if url.path else path
+        target=((root / unquote(url.path).lstrip('/')) if url.path.startswith('/') else (path.parent / unquote(url.path))).resolve() if url.path else path
         assert target.exists(), f'Missing local link: {path.name}: {link}'
         if url.fragment and target in docs:
             assert unquote(url.fragment) in docs[target].ids, f'Missing anchor: {link}'
 for path in root.glob('*.html'): shutil.copy2(path,out/path.name)
 for name in ('css','js','images','blog'): shutil.copytree(root/name,out/name,dirs_exist_ok=True)
-for name in ('robots.txt','sitemap.xml'): shutil.copy2(root/name,out/name)
+for name in ('robots.txt','sitemap.xml','favicon.ico','favicon-16x16.png','favicon-32x32.png','favicon-48x48.png','apple-touch-icon.png'): shutil.copy2(root/name,out/name)
 print(f'Validated {len(docs)} HTML documents and all local links; static output ready in dist.')

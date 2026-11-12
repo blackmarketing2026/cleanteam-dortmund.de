@@ -16,11 +16,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://cleanteam-dortmund.de/kontakt.html</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://cleanteam-dortmund.de/blog/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -39,15 +34,5 @@
     <loc>https://cleanteam-dortmund.de/blog/posts/nachhaltige-reinigungsmittel.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://cleanteam-dortmund.de/impressum.html</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  <url>
-    <loc>https://cleanteam-dortmund.de/datenschutz.html</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.2</priority>
   </url>
 </urlset>
